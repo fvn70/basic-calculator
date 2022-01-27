@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "org.hyperskill.calculator"
-        minSdkVersion 21
+        minSdkVersion 19
         // DO NOT CHANGE THIS VALUE
         // Because this version related with robolectic version too
         // [Robolectric] WARN: Android SDK 29 requires Java 9. Tests won't be run on SDK 29 unless explicitly requested.

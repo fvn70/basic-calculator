@@ -24,7 +24,11 @@ class MainActivity : AppCompatActivity() {
         val btnStr = btn.text.toString()
         val editStr = editText.text.toString()
         when (btnStr) {
-            "CLEAR" -> editText.setText("0")
+            "CLEAR" -> {
+                editText.setTextColor(resources.getColor(R.color.black))
+                editText.setText("0")
+                editText.hint = "0"
+            }
             "0" -> {
                 if (editStr !in "-0" ) editText.text.append(btn.text)
             }
@@ -42,7 +46,8 @@ class MainActivity : AppCompatActivity() {
                     editText.setText("-")
                 } else {
                     op1 = editStr.toDouble()
-                    editText.setText("0")
+                    editText.hint = editStr
+                    editText.setTextColor(resources.getColor(R.color.gray))
                     simbol = btnStr
                 }
             }
@@ -55,10 +60,18 @@ class MainActivity : AppCompatActivity() {
                     "/" -> op1 / op2
                     else -> 0.0
                 }
-                editText.setText(res.toString())
+                if (res - res.toInt() != 0.0) {
+                    editText.setText(res.toString())
+                } else {
+                    editText.setText(res.toInt().toString())
+                }
                 op1 = editStr.toDouble()
             }
             else -> {
+                if (editText.currentTextColor == resources.getColor(R.color.gray)) {
+                    editText.setTextColor(resources.getColor(R.color.black))
+                    editText.setText("0")
+                }
                 if (!editText.text.contains("0.") && editText.text.first().toChar() == '0') {
                     editText.text.clear()
                 }
